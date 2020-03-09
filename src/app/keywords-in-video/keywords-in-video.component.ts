@@ -16,7 +16,7 @@ export class KeywordsInVideoComponent{
   view: any[] = [700, 240];
 
   // options
-  legend: boolean = true;
+  legend: boolean = false;
   showLabels: boolean = true;
   animations: boolean = true;
   xAxis: boolean = true;
