@@ -26,7 +26,7 @@ export class KeywordBarsComponent {
     this.data = sample.insights[0].videos[0].insights.keywords.map(k => {
       return {
         name: k.text,
-        value: Math.log((k.instances.length + 10) * 2000)
+        value: k.instances.length + 1
       }
     })
   }
