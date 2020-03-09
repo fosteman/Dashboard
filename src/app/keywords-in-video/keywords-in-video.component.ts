@@ -23,8 +23,8 @@ export class KeywordsInVideoComponent{
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Year';
-  yAxisLabel: string = 'Population';
+  xAxisLabel: string = 'Seconds in video';
+  yAxisLabel: string = 'Number of Keywords';
   timeline: boolean = true;
 
   colorScheme = {
@@ -51,8 +51,14 @@ export class KeywordsInVideoComponent{
         )
     )
 
-
-
-
+    this.data = [{
+        name: "nKeywords",
+        series:  this.period.map(p => {
+          return {
+            name: p.second,
+            value: p.nKeywords
+          }
+        })
+      }]
   }
 }
