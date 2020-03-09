@@ -1,6 +1,6 @@
-export class Chart {
-  constructor(component) {
-    /*default constructor*/
+export class WordCloud {
+  constructor(component, data) {
+    this.data = data
 
     this.margin = {
       top   : 20,
@@ -9,12 +9,11 @@ export class Chart {
       left  : 20
     }
 
-    this.width = component.width - this.margin.left - this.margin.right;
-    this.height = component.height - this.margin.top - this.margin.bottom;
+    this.width = component.width
+    this.height = component.height
 
   }
 
-  svg
   margin: {
     top: number,
     right: number,
@@ -25,16 +24,13 @@ export class Chart {
   height: number
   fillScale: any /*color scale*/
 
-}
-
-interface WordCloudData {
-  textSize: number
-  text: string
-}
-
-export class WordCloud extends Chart {
   data: WordCloudData[]
   fontFace: string
   fontWeight: string
-
 }
+
+interface WordCloudData {
+  text: string
+  textSize: number
+}
+
