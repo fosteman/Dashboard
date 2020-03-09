@@ -15,13 +15,13 @@ export class KeywordCloudComponent implements OnInit {
 
   constructor() {
     this.wordcloud = new WordCloud(
-      {width: 340, height: 240},
+      {width: 700, height: 240},
       sample.insights[0].videos[0].insights.keywords.map(k => {
         return {
           text: k.text,
-          value: Math.log((k.instances.length + 10) * 2000)
-        };
-      }));
+          value: k.instances.length * 3 % 36
+        }
+      }))
   }
 
 
@@ -52,7 +52,7 @@ export class KeywordCloudComponent implements OnInit {
     }
 
     let layout = cloud()
-      .size([340, 240])
+      .size([this.wordcloud.width, this.wordcloud.height])
       .words(this.wordcloud.data)
       .padding(5)
       .rotate(() => Math.random() * 2 * 10)

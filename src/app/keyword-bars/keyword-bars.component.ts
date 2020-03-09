@@ -7,7 +7,7 @@ import sample from '../../assets/sample.json';
 })
 export class KeywordBarsComponent {
   data
-  view: any[] = [400, 240];
+  view: any[] = [700, 240];
 
   showXAxis = true;
   showYAxis = true;
@@ -25,7 +25,7 @@ export class KeywordBarsComponent {
     this.data = sample.insights[0].videos[0].insights.keywords.map(k => {
       return {
         name: k.text,
-        value: k.instances.length + 1
+        value: k.instances.length
       }
     }).sort((a,b) => a.value > b.value ? -1 : 1)
   }
