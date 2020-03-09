@@ -53,10 +53,11 @@ export class KeywordCloudComponent implements OnInit {
       .data(this.wordcloud.data)
       .enter()
       .append('text')
-      .style('font-size', d => d.textSize + 'px')
+      .style('font-size', d => d.textSize * 5 + 'px')
       .style('fill', (_, i) => this.wordcloud.fillScale(i))
       .attr('text-anchor', 'middle')
       .attr('class', 'word-cloud')
+      .attr("transform", d => "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")")
       .text(d => d.text);
   }
 
