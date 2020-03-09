@@ -20,7 +20,7 @@ export class KeywordCloudComponent implements OnInit {
       .attr('width', this.wordcloud.width)
       .attr('height', this.wordcloud.height)
       .append('g')
-      // .attr('transform', 'translate(' + (this.wordcloud.width / 2) + ',' + (this.height / 2) + ')');
+      .attr('transform', 'translate(' + (this.wordcloud.width / 2) + ',' + (this.wordcloud.height / 2) + ')');
 
     this.wordcloud.fillScale = D3.scaleOrdinal(D3.schemeCategory10);
     this.wordcloud.data = this.keywords.map(k => {
@@ -38,6 +38,7 @@ export class KeywordCloudComponent implements OnInit {
       .words(this.wordcloud.data)
       .padding(5)
       .rotate(() => Math.random() * 2 * 10)
+      .spiral('archimedean')
       .font(this.wordcloud.fontFace)
       .fontWeight(this.wordcloud.fontWeight)
       .fontSize(this.wordcloud.data.map(k => k.textSize))
@@ -53,7 +54,7 @@ export class KeywordCloudComponent implements OnInit {
       .data(this.wordcloud.data)
       .enter()
       .append('text')
-      .style('font-size', d => d.textSize * 5 + 'px')
+      .style('font-size', d => d.textSize * 2 + 'px')
       .style('fill', (_, i) => this.wordcloud.fillScale(i))
       .attr('text-anchor', 'middle')
       .attr('class', 'word-cloud')
