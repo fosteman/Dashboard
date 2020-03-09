@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import sample from '../../assets/sample.json';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-keyword-bars',
@@ -8,12 +7,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 })
 export class KeywordBarsComponent {
   data
-  view: any[] = [700, 400];
+  view: any[] = [400, 240];
 
   showXAxis = true;
   showYAxis = true;
   gradient = false;
-  showLegend = true;
+  showLegend = false;
   showXAxisLabel = true;
   yAxisLabel = 'Popularity';
   showYAxisLabel = true;
@@ -28,6 +27,6 @@ export class KeywordBarsComponent {
         name: k.text,
         value: k.instances.length + 1
       }
-    })
+    }).sort((a,b) => a.value > b.value ? -1 : 1)
   }
 }
