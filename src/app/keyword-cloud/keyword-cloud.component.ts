@@ -19,7 +19,7 @@ export class KeywordCloudComponent implements OnInit {
       sample.insights[0].videos[0].insights.keywords.map(k => {
         return {
           text: k.text,
-          textSize: Math.log((k.instances.length + 10) * 2000)
+          value: Math.log((k.instances.length + 10) * 2000)
         };
       }));
   }
@@ -44,7 +44,7 @@ export class KeywordCloudComponent implements OnInit {
         .data(words)
         .enter()
         .append('text')
-        .style('font-size', d => d.textSize + 'px')
+        .style('font-size', d => d.value + 'px')
         .style('fill', (_, i) => this.wordcloud.fillScale(i))
         .attr('text-anchor', 'middle')
         .attr("transform", d => "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")")
@@ -58,7 +58,7 @@ export class KeywordCloudComponent implements OnInit {
       .rotate(() => Math.random() * 2 * 10)
       .font(this.wordcloud.fontFace)
       .fontWeight(this.wordcloud.fontWeight)
-      .fontSize(k => k.textSize)
+      .fontSize(k => k.value)
       .on('end', drawLayout)
       .start();
   }
