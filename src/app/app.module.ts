@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { KeywordCloudComponent } from './keyword-cloud/keyword-cloud.component';
 import { KeywordBarsComponent } from './keyword-bars/keyword-bars.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { KeywordBarsComponent } from './keyword-bars/keyword-bars.component';
     KeywordBarsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

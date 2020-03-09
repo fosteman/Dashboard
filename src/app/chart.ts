@@ -40,6 +40,7 @@ export class BarChart {
       left  : 20
     }
 
+    this.range = 100
     this.width = component.width
     this.height = component.height
 
@@ -50,14 +51,16 @@ export class BarChart {
     bottom: number,
     left: number,
   }
+  range: number
   width: number
   height: number
   fillScale: any /*color scale*/
+  barWidth: number
 
   data: Datum2D[]
 }
 
-interface Datum2D {
+export interface Datum2D {
   text: string
   value: number
 }
