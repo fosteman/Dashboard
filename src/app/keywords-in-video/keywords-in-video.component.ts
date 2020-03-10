@@ -16,7 +16,7 @@ export class KeywordsInVideoComponent{
   view: any[] = [700, 240];
 
   // options
-  legend: boolean = false;
+  legend: boolean = true;
   showLabels: boolean = true;
   animations: boolean = true;
   xAxis: boolean = true;
@@ -24,7 +24,7 @@ export class KeywordsInVideoComponent{
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
   xAxisLabel: string = 'Seconds in video';
-  yAxisLabel: string = 'Number of Keywords';
+  yAxisLabel: string = 'Analytics Inferences';
   timeline: boolean = true;
 
   colorScheme = {
@@ -37,28 +37,55 @@ export class KeywordsInVideoComponent{
     var second: number = 0
     // populate x axis.
     while (second <= convertTime2Seconds(sample.insights[0].videos[0].insights.duration)) {
-      this.period.push({second,
-                        nKeywords: 0})
+      this.period.push({
+        second,
+        nKeywords: 0,
+        nOCR: 0,
+      })
       second += 15
     }
 
+    // count keyword distribution
     sample.insights[0].videos[0].insights.keywords.forEach(
       keyword =>
         keyword.instances.forEach(instance =>
-        {
-          this.period[Math.floor(convertTime2Seconds(instance.start) / 15)].nKeywords += 1
+          {
+            this.period[Math.floor(convertTime2Seconds(instance.start) / 15)].nKeywords += 1
           }
         )
-    )
+    );
+
+    // count ocr distribution
+    sample.insights[0].videos[0].insights.ocr.forEach(
+      ocr => {
+        console.log(ocr)
+        ocr.instances.forEach(instance =>
+          {
+            this.period[Math.floor(convertTime2Seconds(instance.start) / 15)].nOCR += 1
+          }
+        )
+      }
+    );
 
     this.data = [{
-        name: "nKeywords",
+      name: "keywords",
+      series:  this.period.map(p => {
+        return {
+          name: p.second,
+          value: p.nKeywords
+        }
+      })
+    },
+      {
+        name: "Optical characters",
         series:  this.period.map(p => {
           return {
             name: p.second,
-            value: p.nKeywords
+            value: p.nOCR
           }
         })
-      }]
+      }
+
+    ]
   }
 }

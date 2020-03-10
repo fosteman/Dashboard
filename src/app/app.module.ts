@@ -7,8 +7,9 @@ import { KeywordBarsComponent } from './keyword-bars/keyword-bars.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { KeywordsInVideoComponent } from './keywords-in-video/keywords-in-video.component';
-import {HighchartsChartComponent} from 'highcharts-angular';
-import { HighchartOneComponent } from './highchart-one/highchart-one.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -16,8 +17,6 @@ import { HighchartOneComponent } from './highchart-one/highchart-one.component';
     KeywordCloudComponent,
     KeywordBarsComponent,
     KeywordsInVideoComponent,
-    HighchartsChartComponent,
-    HighchartOneComponent
   ],
   imports: [
     BrowserModule,
