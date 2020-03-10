@@ -13,7 +13,7 @@ function convertTime2Seconds (time: string): number {
 export class KeywordsInVideoComponent{
   data: any[]
   period: any
-  view: any[] = [700, 240];
+  view: any[] = [800, 240];
 
   // options
   legend: boolean = true;
@@ -58,7 +58,6 @@ export class KeywordsInVideoComponent{
     // count ocr distribution
     sample.insights[0].videos[0].insights.ocr.forEach(
       ocr => {
-        console.log(ocr)
         ocr.instances.forEach(instance =>
           {
             this.period[Math.floor(convertTime2Seconds(instance.start) / 15)].nOCR += 1

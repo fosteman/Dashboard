@@ -9,6 +9,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "scripts": {
+    "deploy": "ng build --prod --base-href \"https://fosteman.github.io/Dashboard/\" && ngh --dir \"/Dashboard/\""
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.0.5",
